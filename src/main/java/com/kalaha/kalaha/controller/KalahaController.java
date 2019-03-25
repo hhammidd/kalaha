@@ -16,7 +16,7 @@ public class KalahaController {
 
     private GameStarter gameStarter;
 
-    //@GetMapping("/create")
+    @GetMapping("/create")
     public GameStarter createGame(){
         gameStarter = kalahaService.createGame();
         return gameStarter;
