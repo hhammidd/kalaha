@@ -17,14 +17,13 @@ public class KalahaServiceImpl implements KalahaService {
 
     String message = "";
     int gameId = 1;
-    Map<Integer, GameStarter> gameStarterMap = new HashMap<>();
-    GameStarter gameStarter;
+    private GameStarter gameStarter;
 
 
     // TODO make a GameStarter here that initialize before  by initializer
 
     @Override
-    public GameStarter startGame(int choosenPitId, GameStarter gameStarter) {
+    public void startGame(int choosenPitId) {
         //define a board
         Board boardStatus = gameStarter.getBoard();
         // take no pit you choose and take no after it ???
@@ -91,15 +90,13 @@ public class KalahaServiceImpl implements KalahaService {
 
         gameStarter.setMessage(message);
         gameStarter.setBoard(boardStatus);
-        gameStarterMap.put(1,gameStarter);
-        return gameStarter;
+        //return gameStarter;
     }
 
     @Override
-    public GameStarter createGame() {
-        gameStarter = new GameStarter();
-        gameStarterMap.put(1, gameStarter);
-        return gameStarter;
+    public void createGame() {
+         gameStarter = new GameStarter();
+        //return gameStarter;
     }
 
     private GameStarter gameOver(GameStarter gameStarter, Pit[] pits, int noPlayerOneSeeds, int noPlayerTwoSeeds) {

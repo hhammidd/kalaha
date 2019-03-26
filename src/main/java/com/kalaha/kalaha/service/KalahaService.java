@@ -5,7 +5,7 @@ import com.kalaha.kalaha.model.GameStarter;
 
 public interface KalahaService {
 
-    GameStarter startGame(int setPitId, GameStarter gameStarter);
+    void startGame(int setPitId);
 
-    GameStarter createGame();
+    void createGame();
 }
