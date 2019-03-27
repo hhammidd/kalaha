@@ -1,5 +1,7 @@
 package com.kalaha.kalaha.model;
 
+import com.kalaha.kalaha.service.ConstantsEnum;
+
 public class Pit {
     private int stonesNo;
     private int id;
@@ -7,7 +9,7 @@ public class Pit {
     private boolean zeroSeed;
 
     public Pit() {
-        this.stonesNo = 6;
+        this.stonesNo = ConstantsEnum.NO_STONES_IN_PIT.getAmount();
     }
 
     public int getStonesNo() {

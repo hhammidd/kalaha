@@ -1,15 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" src="/js/kalaha.js"></script>
+    <title>Kalaha Game</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/getrequest.js"></script>
+
 </head>
 <body>
-<h1>Kalaha Game</h1>
-<h2>Player one can start the game</h2>
-<div>
-    <input type="button" id="strat" onclick="startGame()" value="Start Game">
+
+<div class="container">
+
+    <h3 style="color:blue">Kalaha Game</h3>
+
+    <div>
+        <form class="form-inline" style="margin:20px 20px 20px 20px" id="customerForm">
+            <div class="form-group">
+                <label for="firstname" style="margin-right:5px">Palyer 1 :</label>
+                <input type="text" class="form-control" id="firstname" placeholder="Enter FirstName"/>
+            </div>
+            <div class="form-group">
+                <label for="lastname" style="margin-left:20px; margin-right:5px">Player 2:</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Enter LastName"/>
+            </div>
+            <button type="submit" class="btn btn-default" style="margin-left:20px; margin-right:5px">Submit</button>
+        </form>
+    </div>
+
+    <div class="col-sm-7" id="postResultDiv">
+    </div>
+
+    <div class="col-sm-7" style="margin:20px 0px 20px 0px">
+        <button id="getAllCustomerId" type="button" class="btn btn-primary">Start the Game</button>
+        <div id="getResultDiv" style="padding:20px 10px 20px 50px">
+            <ul class="list-group">
+            </ul>
+        </div>
+    </div>
+
 </div>
+
+<section id="game" class="world">
+    <h1>KALAH GAME</h1>
+    <div class="message"><h2>{{msg}} </h2>
+    </div>
+    <div>
+        <h1 class="north">North Player</h1>
+        <h1 class="pointsNorth">{{pointsNorth}} stones captured</h1>
+    </div>
+    <section class="board">
+        <section class="rowNorth">
+            <ul id="playerNorth" class="player-row-container">
+                <li><div class="circle circle-home">{{board[0]}}</div></li>
+                <li><div class="circle" ng-click='move(13)'>{{board[13]}}</div>
+                <li><div class="circle" ng-click='move(12)'>{{board[12]}}</div>
+                <li><div class="circle" ng-click='move(11)'>{{board[11]}}</div>
+                <li><div class="circle" ng-click='move(10)'>{{board[10]}}</div>
+                <li><div class="circle" ng-click='move(9)'>{{board[9]}}</div>
+                <li><div class="circle" ng-click='move(8)'>{{board[8]}}</div>
+            </ul>
+        </section>
+        <section class="rowSouth">
+
+            <ul id="playerSouth" class="player-row-container">
+                <li><div class="circle" ng-click="move(1)">{{board[1]}}</div>
+                <li><div class="circle" ng-click='move(2)'>{{board[2]}}</div>
+                <li><div class="circle" ng-click='move(3)'>{{board[3]}}</div>
+                <li><div class="circle" ng-click='move(4)'>{{board[4]}}</div>
+                <li><div class="circle" ng-click='move(5)'>{{board[5]}}</div>
+                <li><div class="circle" ng-click='move(6)'>{{board[6]}}</div>
+                <li><div class="circle circle-home">{{board[7]}}</div>
+            </ul>
+
+        </section>
+        <div>
+            <h1 class="south">South Player</h1>
+            <h1 class="pointsSouth">{{pointsSouth}} stones captured</h1>
+        </div>
+    </section>
+
+</section>
 </body>
 </html>

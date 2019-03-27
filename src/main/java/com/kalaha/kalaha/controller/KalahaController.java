@@ -5,10 +5,7 @@ import com.kalaha.kalaha.model.GameStarter;
 import com.kalaha.kalaha.service.KalahaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/kalaha")
@@ -21,10 +18,8 @@ public class KalahaController {
 
     @GetMapping("/create")
     public String createGame(){
-        //gameStarter =
         kalahaService.createGame();
-        //GameStarter gameStarter = new GameStarter();
-        return "tsest";
+        return "Game strated. Platyer 1 is active";
     }
 
 
@@ -33,7 +28,7 @@ public class KalahaController {
         //TODO delete below after making controller
         int setPitId = pitId;
         kalahaService.startGame(setPitId);
-        //TODO
+        //TODO change the name from startGame to move
         //return gameStarter;
     }
 }
