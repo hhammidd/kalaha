@@ -2,6 +2,7 @@ package com.kalaha.kalaha.controller;
 
 
 import com.kalaha.kalaha.model.GameStarter;
+import com.kalaha.kalaha.model.dto.GameStatusDto;
 import com.kalaha.kalaha.service.KalahaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,18 +18,15 @@ public class KalahaController {
     //private GameStarter gameStarter;
 
     @GetMapping("/create")
-    public String createGame(){
-        kalahaService.createGame();
-        return "Game strated. Platyer 1 is active";
+    public GameStatusDto createGame(){
+        return kalahaService.createGame();
     }
 
 
     @GetMapping("/move")
-    public void move(@RequestParam int pitId){
-        //TODO delete below after making controller
-        int setPitId = pitId;
-        kalahaService.startGame(setPitId);
+    public GameStatusDto move(@RequestParam int pitId){
+
         //TODO change the name from startGame to move
-        //return gameStarter;
+        return kalahaService.startGame(pitId);
     }
 }

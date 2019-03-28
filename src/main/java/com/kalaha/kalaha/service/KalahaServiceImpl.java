@@ -5,6 +5,7 @@ import com.kalaha.kalaha.model.Board;
 import com.kalaha.kalaha.model.Pit;
 import com.kalaha.kalaha.model.GameStarter;
 import com.kalaha.kalaha.model.Player;
+import com.kalaha.kalaha.model.dto.GameStatusDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,16 +14,11 @@ import java.util.List;
 @Service
 public class KalahaServiceImpl implements KalahaService {
 
-    final int NO_PLAYER_PITS = 7;
     String message = "";
-    int gameId = 1;
     private GameStarter gameStarter;
 
-
-    // TODO make a GameStarter here that initialize before  by initializer
-
     @Override
-    public void startGame(int selectedPitIndex) {
+    public GameStatusDto startGame(int selectedPitIndex) {
         //define a board
         Board boardStatus = gameStarter.getBoard();
         // take no pit you choose and take no after it ???
@@ -91,12 +87,22 @@ public class KalahaServiceImpl implements KalahaService {
 
         gameStarter.setMessage(message);
         gameStarter.setBoard(boardStatus);
-        //return gameStarter;
+        GameStatusDto gameStatusDto = new GameStatusDto();
+        gameStatusDto.setMessage(message);
+        if (gameStarter.getPlayerOne().isActive()) {
+            gameStatusDto.setActivePlayer(1);
+        } else
+            gameStatusDto.setActivePlayer(2);
+        return gameStatusDto;
     }
 
     @Override
-    public void createGame() {
+    public GameStatusDto createGame() {
+        GameStatusDto gameStatusDto = new GameStatusDto();
         gameStarter = new GameStarter();
+        gameStatusDto.setMessage("game board created");
+        gameStatusDto.setActivePlayer(1);
+        return gameStatusDto;
     }
 
     private GameStarter gameOver(GameStarter gameStarter, Pit[] pits, int noPlayerOneSeeds, int noPlayerTwoSeeds) {

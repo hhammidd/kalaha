@@ -2,10 +2,11 @@ package com.kalaha.kalaha.service;
 
 
 import com.kalaha.kalaha.model.GameStarter;
+import com.kalaha.kalaha.model.dto.GameStatusDto;
 
 public interface KalahaService {
 
-    void startGame(int setPitId);
+    GameStatusDto startGame(int setPitId);
 
-    void createGame();
+    GameStatusDto createGame();
 }
